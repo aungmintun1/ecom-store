@@ -1,12 +1,14 @@
 import Header from "../components/Header/header";
 import Footer from "../components/Footer/footer";
+import Cart from "../components/Cart/cart";
+import Product from "../components/Product/product";
 
 export default function Home() {
 
     return (
    <>
      <Header/>
-
+     <Cart/>
      <section id="home">
         <div class="container">
             <h5>NEW ARRAIVALS</h5>

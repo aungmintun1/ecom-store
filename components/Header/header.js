@@ -14,22 +14,15 @@ const Header = (props) => {
                     <ul className="navbar-nav ml-auto">
     
                         <li className="nav-item">
-                            <a className="nav-link active" href="#">Home</a>
+                            <a className="nav-link active" href="/">Home</a>
                         </li>
                         <li className="nav-item">
-                            <a className="nav-link" href="shop.html">Shop</a>
+                            <a className="nav-link" href="/shop">Shop</a>
                         </li>
                         <li className="nav-item">
                             <a className="nav-link" href="blog.html">Blog</a>
                         </li>
                         <li className="nav-item">
-                            <a className="nav-link" href="#">About</a>
-                        </li>
-                        <li className="nav-item">
-                            <a className="nav-link" href="#">Contact Us</a>
-                        </li>
-                        <li className="nav-item">
-                            <i className="fal fa-search" ></i>
                             <i onClick={()=> globalState.setCartMenu(true)} className="fal fa-shopping-bag"></i>
                         </li>
                     </ul>

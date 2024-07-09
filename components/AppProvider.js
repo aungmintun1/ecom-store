@@ -10,11 +10,17 @@ export function AppProvider({children}){
     const [cartMenu, setCartMenu] = useState(false);
     const [cartItems, setCartItems] = useState([]);
 
-    const addCart = (title,price,image) =>{
-        setCartItems([...cartItems, {title,price,image}]);
+    const addCart = (title,price,image,id) =>{
+        setCartItems([...cartItems, {title,price,image,id}]);
         setCartMenu(true)
    
     }
+
+    const removeCart = (id) =>{
+     let list = cartItems.filter((item) => id != item.id)
+      setCartItems(list);
+ 
+  }
 
   return(
     <StateContext.Provider
@@ -24,7 +30,7 @@ export function AppProvider({children}){
         cartItems,
         setCartMenu,
         addCart,
-      
+        removeCart
 
 
     }}>

@@ -1,8 +1,11 @@
 import { useStateContext } from '../AppProvider'
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 const Cart = () =>{
 
 const globalState= useStateContext();
+   const [subtotal, setSubTotal] = useState(0);
+
+
     useEffect(() =>{
 		if(globalState.cartMenu) {
 			document.body.style.overflowY = 'hidden';
@@ -13,14 +16,21 @@ const globalState= useStateContext();
 
  const loopItems = () =>{
   return globalState.cartItems.map((item) => {
-        return <CartItem title={item.title} price={item.price} image={item.image}/>
+        return <CartItem title={item.title} price={item.price} image={item.image} id={item.id}/>
     
     })
  }   
 
- 
+ const total = () =>{
+  let sum=0;
+   globalState.cartItems.forEach((item) => {
+     sum += item.price
+})
 
- 
+return sum
+   
+ }
+
     return (
         <>
 
@@ -37,7 +47,7 @@ const globalState= useStateContext();
 
       <div className="cart-subtotal">
         <h4 className='total-text'>Subtotal</h4>
-        <p className='total-amount'>$40.00</p>
+        <p className='total-amount'>${total()}</p>
       </div>
       <button className="btn btn-dark btn-block">Check Out</button>
       </div>
@@ -49,19 +59,21 @@ const globalState= useStateContext();
 }
 
 const CartItem = (props) => {
+  const globalState= useStateContext();
+  const [totalItems, setTotalItems] = useState(1);
 	return (
         <div className="cart-item">
         <img src={props.image} alt="Product" className="cart-item-image " />
         <div className="cart-item-details">
           <h4>{props.title}</h4>
           <p>${props.price}</p>
-          <p>size: medium</p>
+          <p>size: {props.id}</p>
           <div className="cart-item-controls">
-            <button className="btn btn-outline-secondary">
-              <i className="fas fa-trash"></i>
+            <button onClick={()=> totalItems <= 1 ? globalState.removeCart(props.id) : setTotalItems(totalItems-1)} className="btn btn-outline-secondary">
+              <i className="fas fa-trash" ></i>
             </button>
-            <span className="item-quantity">1</span>
-            <button className="btn btn-outline-secondary">
+            <span className="item-quantity">{totalItems}</span>
+            <button className="btn btn-outline-secondary" onClick={()=> setTotalItems(totalItems+1)}>
               <i className="fas fa-plus"></i>
             </button>
           </div>

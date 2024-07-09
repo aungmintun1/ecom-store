@@ -22,12 +22,12 @@ export default function Shop() {
         <div class="row mx-auto container">
           {/* start of rows */}
 
-            <Product title="Blue T-shirt" price={92.00} image='img/shop/1.jpg'/>
-            <Product title="Running Shoes" price={92.00} image='img/shop/2.jpg'/>
+            <Product title="Blue T-shirt" price={92.00} image='img/shop/1.jpg' id={1}/>
+            <Product title="Running Shoes" price={92.00} image='img/shop/2.jpg'  id={2}/>
             
-            <Product title="Sport Bag" price={92.00} image='img/shop/3.jpg'/>
+            <Product title="Sport Bag" price={92.00} image='img/shop/3.jpg'  id={3}/>
             
-            <Product title="Casual Blue Shoes" price={92.00} image='img/shop/4.jpg'/>
+            <Product title="Casual Blue Shoes" price={92.00} image='img/shop/4.jpg'  id={4}/>
 
             {/* <div class="product col-lg-3 col-md-4 col-12 text-center">
                 <img class="mb-3 img-fluid" src="img/shop/2.jpg" alt=""/>
