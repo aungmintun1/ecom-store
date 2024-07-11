@@ -1,9 +1,36 @@
 import { useStateContext } from '../AppProvider'
 import { useEffect, useState } from "react";
-const Cart = () =>{
+import { loadStripe } from '@stripe/stripe-js';
 
+const Cart = () =>{
+const stripePromise = loadStripe('pk_test_51OkouIJ4pPgw30DxgN8tgYwaYgMotVCdDNnyFdSKagZtuSyeZQ3hE6bOm6vRWqtJt5WLBv3cPV0nhZRK8NQ1MO7600nAH4nQyD');
 const globalState= useStateContext();
-   const [subtotal, setSubTotal] = useState(0);
+
+const handleCheckout = async () => {
+  const stripe = await stripePromise;
+
+  console.log('this is the ' + process.env.STRIPE_SECRET_KEY);
+
+  const response = await fetch('/api/checkout', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({cartItems: globalState.cartItems}),
+  });
+
+  const session = await response.json();
+
+  const result = await stripe.redirectToCheckout({
+    sessionId: session.id,
+  });
+
+  if (result.error) {
+    console.error('this is the error' + result.error.message);
+  }
+  
+};
+
 
 
     useEffect(() =>{
@@ -16,19 +43,19 @@ const globalState= useStateContext();
 
  const loopItems = () =>{
   return globalState.cartItems.map((item) => {
-        return <CartItem title={item.title} price={item.price} image={item.image} id={item.id}/>
+        return <CartItem title={item.title} price={item.price} image={item.image} id={item.id} quantity={item.quantity}/>
     
     })
  }   
 
- const total = () =>{
+const total = () =>{
   let sum=0;
    globalState.cartItems.forEach((item) => {
-     sum += item.price
+    let totalPrice = item.quantity*item.price
+     sum += totalPrice;
 })
 
-return sum
-   
+return sum;
  }
 
     return (
@@ -47,9 +74,9 @@ return sum
 
       <div className="cart-subtotal">
         <h4 className='total-text'>Subtotal</h4>
-        <p className='total-amount'>${total()}</p>
+        <p className='total-amount'>${total().toFixed(2)}</p>
       </div>
-      <button className="btn btn-dark btn-block">Check Out</button>
+      <button onClick={handleCheckout} className="btn btn-dark btn-block">Check Out</button>
       </div>
 
 
@@ -60,20 +87,52 @@ return sum
 
 const CartItem = (props) => {
   const globalState= useStateContext();
-  const [totalItems, setTotalItems] = useState(1);
+
+  const changeQuantity = (id, type) => {
+
+    let currentQ = globalState.cartItems.find((item) => item.id === id);
+    
+    if (type==='add') {
+      currentQ.quantity += 1;
+    }
+
+    else if (type==='subtract'){
+
+     if(currentQ.quantity > 1) 
+      currentQ.quantity -= 1;
+
+     else {
+       let list = globalState.cartItems.filter((item) => id != item.id)
+      return globalState.setCartItems(list);
+     }
+    }
+
+      let newItems = globalState.cartItems.map((item) => {
+        if (item.id === currentQ.id) {
+          return { ...item, quantity: currentQ.quantity }; // Correctly create a new item with updated quantity
+        }
+        return item;
+      });
+      console.log(newItems)
+      globalState.setCartItems(newItems)
+     
+  
+  };
+  
 	return (
         <div className="cart-item">
         <img src={props.image} alt="Product" className="cart-item-image " />
         <div className="cart-item-details">
           <h4>{props.title}</h4>
-          <p>${props.price}</p>
+          <p>${props.price.toFixed(2)}</p>
           <p>size: {props.id}</p>
           <div className="cart-item-controls">
-            <button onClick={()=> totalItems <= 1 ? globalState.removeCart(props.id) : setTotalItems(totalItems-1)} className="btn btn-outline-secondary">
+            <button onClick={()=>changeQuantity(props.id,'subtract')}  className="btn btn-outline-secondary">
               <i className="fas fa-trash" ></i>
             </button>
-            <span className="item-quantity">{totalItems}</span>
-            <button className="btn btn-outline-secondary" onClick={()=> setTotalItems(totalItems+1)}>
+            <span className="item-quantity">{props.quantity}</span>
+            <button className="btn btn-outline-secondary" onClick={()=>changeQuantity(props.id,'add')} >
+
               <i className="fas fa-plus"></i>
             </button>
           </div>
