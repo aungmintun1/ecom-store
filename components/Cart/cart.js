@@ -77,7 +77,7 @@ return sum;
 
       <div className="cart-subtotal">
         <h4 className='total-text'>Subtotal</h4>
-        {/* <p className='total-amount'>$ {globalState.cartItems !== null ? total().toFixed(2) : 0 }</p> */}
+        <p className='total-amount'>$ {globalState.cartItems !== null ? total().toFixed(2) : 0 }</p>
       </div>
       <button onClick={handleCheckout} className="btn btn-dark btn-block">Check Out</button>
       </div>
@@ -106,7 +106,9 @@ const CartItem = (props) => {
 
      else {
        let list = globalState.cartItems.filter((item) => id != item.id)
+       ls.set('myCart', list);
       return globalState.setCartItems(list);
+      
      }
     }
 
@@ -116,10 +118,11 @@ const CartItem = (props) => {
         }
         return item;
       });
-      console.log(newItems)
+
+      ls.set('myCart', newItems);
       globalState.setCartItems(newItems)
+
      
-  
   };
   
 	return (
@@ -130,14 +133,14 @@ const CartItem = (props) => {
           <p>${props.price.toFixed(2)}</p>
           {props.size ? <p>Size: {props.size}</p> : ''}
           <div className="cart-item-controls">
-            {/* <button onClick={()=>changeQuantity(props.id,'subtract')}  className="btn btn-outline-secondary">
+            <button onClick={()=>changeQuantity(props.id,'subtract')}  className="btn btn-outline-secondary">
               <i className="fas fa-trash" ></i>
             </button>
             <span className="item-quantity">{props.quantity}</span>
             <button className="btn btn-outline-secondary" onClick={()=>changeQuantity(props.id,'add')} >
 
               <i className="fas fa-plus"></i>
-            </button> */}
+            </button>
           </div>
         </div>
       </div>

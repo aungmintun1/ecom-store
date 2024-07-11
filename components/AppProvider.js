@@ -23,9 +23,10 @@ export function AppProvider({children}){
     const addCart = (title, price, image, id, quantity, size) => {
 
       setCartMenu(true);
-      
+
       let myCart = ls.get('myCart') || [];
       myCart.push({ title, price, image, id, quantity, size });
+      
       ls.set('myCart', myCart);
       setCartItems(myCart);
     };
