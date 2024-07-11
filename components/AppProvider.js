@@ -26,7 +26,7 @@ export function AppProvider({children}){
 
       let myCart = ls.get('myCart') || [];
       myCart.push({ title, price, image, id, quantity, size });
-      
+
       ls.set('myCart', myCart);
       setCartItems(myCart);
     };
@@ -181,6 +181,35 @@ export function AppProvider({children}){
       image: "/img/shop/20.jpg",
       id: 20,
    
+    },
+    {
+      title: "Casual White Shoes",
+      price: 125.00,
+      image: "/img/featured/1.jpg",
+      id: 21,
+      size: "medium",
+
+    },
+    {
+      title: "Casual Red Shoes",
+      price: 125.00,
+      image: "/img/featured/2.jpg",
+      id: 22,
+
+    },
+    {
+      title: "Blue Bookbag",
+      price: 90.00,
+      image: "/img/featured/3.jpg",
+      id: 23,
+   
+    },
+    {
+      title: "Pink Beanie",
+      price: 20.00,
+      image: "/img/featured/4.jpg",
+      id: 24,
+
     }
   ]
 

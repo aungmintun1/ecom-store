@@ -47,6 +47,13 @@ export default function Shop() {
             <Product title="Black Hoodie" price={90.00} image='img/shop/19.jpg'  id={19}  type="clothing" />
             <Product title="Long Orange Cardigan" price={90.00} image='img/shop/20.jpg' id={20}  type="clothing" />
 
+            <Product title="Casual White Shoes" price={125.00} image='/img/featured/1.jpg' id={21}  size="medium" type="clothing" />
+            <Product title="Casual Red Shoes" price={125.00} image='/img/featured/2.jpg' id={22}  type="clothing" />   
+            <Product title="Blue Bookbag" price={90.00} image='/img/featured/3.jpg'  id={23} type="item" />
+            <Product title="Pink Beanie" price={20.00} image='/img/featured/4.jpg' id={24}  type="item" />
+
+        
+
             <nav aria-label="...">
                 <ul class="pagination mt-5">
                     <li class="page-item disabled">

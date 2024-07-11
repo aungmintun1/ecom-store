@@ -2,6 +2,8 @@ import React from 'react'
 import Header from "../../components/Header/header";
 import Cart from "../../components/Cart/cart";
 import Footer from "../../components/Footer/footer";
+import Product from "../../components/Product/product";
+
 import { useStateContext } from '../../components/AppProvider';
 import { useEffect, useState } from "react";
 
@@ -70,7 +72,12 @@ export default function ProductPage(props) {
             <hr class="mx-auto"/>
         </div>
         <div class="row mx-auto container-fluid">
-            <div class="product text-center col-lg-3 col-md-4 col-12">
+            <Product title="Casual White Shoes" price={125.00} image='/img/featured/1.jpg' id={21}  size="medium" type="clothing" />
+            <Product title="Casual Red Shoes" price={125.00} image='/img/featured/2.jpg' id={22}  type="clothing" />   
+            <Product title="Blue Bookbag" price={90.00} image='/img/featured/3.jpg'  id={23} type="item" />
+            <Product title="Pink Beanie" price={20.00} image='/img/featured/4.jpg' id={24}  type="item" />
+
+            {/* <div class="product text-center col-lg-3 col-md-4 col-12">
                 <img class="img-fluid mb-3" src="/img/featured/1.jpg" alt=""/>
                 <div class="star">
                     <i class="fas fa-star"></i>
@@ -121,7 +128,7 @@ export default function ProductPage(props) {
                 <h5 class="p-name">Sport Boots</h5>
                 <h4 class="p-price">$92.00</h4>
                 <button class="buy-btn">Buy Now</button>
-            </div>
+            </div> */}
         </div>
     </section>
 
