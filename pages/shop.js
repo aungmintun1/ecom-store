@@ -54,7 +54,7 @@ export default function Shop() {
 
         
 
-            <nav aria-label="...">
+            {/* <nav aria-label="...">
                 <ul class="pagination mt-5">
                     <li class="page-item disabled">
                         <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
@@ -68,7 +68,9 @@ export default function Shop() {
                         <a class="page-link" href="#">Next</a>
                     </li>
                 </ul>
-            </nav>
+            </nav> */}
+
+            
         </div>
     </section>
         
