@@ -40,11 +40,11 @@ const Footer = () =>{
         <div class="footer-one col-lg-3 col-md-6 col-12">
             <h5 class="pb-2">Instagram</h5>
             <div class="row">
-                <img class="img-fluid w-25 h-100 m-2" src="img/insta/1.jpg" alt=""/>
-                <img class="img-fluid w-25 h-100 m-2" src="img/insta/2.jpg" alt=""/>
-                <img class="img-fluid w-25 h-100 m-2" src="img/insta/3.jpg" alt=""/>
-                <img class="img-fluid w-25 h-100 m-2" src="img/insta/4.jpg" alt=""/>
-                <img class="img-fluid w-25 h-100 m-2" src="img/insta/5.jpg" alt=""/>
+                <img class="img-fluid w-25 h-100 m-2" src="/img/insta/1.jpg" alt=""/>
+                <img class="img-fluid w-25 h-100 m-2" src="/img/insta/2.jpg" alt=""/>
+                <img class="img-fluid w-25 h-100 m-2" src="/img/insta/3.jpg" alt=""/>
+                <img class="img-fluid w-25 h-100 m-2" src="/img/insta/4.jpg" alt=""/>
+                <img class="img-fluid w-25 h-100 m-2" src="/img/insta/5.jpg" alt=""/>
             </div>
         </div>
     </div>
@@ -56,7 +56,7 @@ const Footer = () =>{
                 <img src="img/payment.png" alt=""/>
             </div>
             <div class="col-lg-4 col-md-6 col-12 text-nowrap mb-2">
-                <p>rymo eCommerce © 2021. All Rights Reserved</p>
+                <p>Developed by Aung © 2024. All Rights Reserved</p>
             </div>
             <div class="col-lg-4 col-md-6 col-12">
                 <a href="#"><i class="fab fa-facebook-f"></i></a>

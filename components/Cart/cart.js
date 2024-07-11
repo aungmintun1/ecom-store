@@ -43,7 +43,7 @@ const handleCheckout = async () => {
 
  const loopItems = () =>{
   return globalState.cartItems.map((item) => {
-        return <CartItem title={item.title} price={item.price} image={item.image} id={item.id} quantity={item.quantity}/>
+        return <CartItem title={item.title} price={item.price} image={item.image} id={item.id} quantity={item.quantity} size={item.size}/>
     
     })
  }   
@@ -125,7 +125,7 @@ const CartItem = (props) => {
         <div className="cart-item-details">
           <h4>{props.title}</h4>
           <p>${props.price.toFixed(2)}</p>
-          <p>size: {props.id}</p>
+          {props.size ? <p>Size: {props.size}</p> : ''}
           <div className="cart-item-controls">
             <button onClick={()=>changeQuantity(props.id,'subtract')}  className="btn btn-outline-secondary">
               <i className="fas fa-trash" ></i>
