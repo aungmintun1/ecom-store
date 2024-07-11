@@ -1,4 +1,5 @@
-import React, { useContext, useState} from 'react';
+import React, { useContext, useState,useEffect} from 'react';
+import ls from 'local-storage';
 
 export const StateContext = React.createContext();
 
@@ -7,17 +8,31 @@ export function useStateContext(){
 }
 
 export function AppProvider({children}){
+
     const [cartMenu, setCartMenu] = useState(false);
     const [cartItems, setCartItems] = useState([]);
 
-    const addCart = (title,price,image,id,quantity,size) =>{
-        setCartItems([...cartItems, {title,price,image,id,quantity,size}]);
-        setCartMenu(true)
-   
-    }
+    // Synchronize state with local storage on mount
+    useEffect(() => {
+      const storedCartItems = ls.get('myCart');
+      if (storedCartItems) {
+        setCartItems(storedCartItems);
+      }
+    }, []);
+  
+    const addCart = (title, price, image, id, quantity, size) => {
+
+      setCartMenu(true);
+      
+      let myCart = ls.get('myCart') || [];
+      myCart.push({ title, price, image, id, quantity, size });
+      ls.set('myCart', myCart);
+      setCartItems(myCart);
+    };
 
     const removeCart = (id) =>{
      let list = cartItems.filter((item) => id != item.id)
+      ls.set('myCart', list);
       setCartItems(list);
  
   }
