@@ -109,13 +109,13 @@
   font-size:1.2rem;
 }
 .cart-item-image{
-  width:75px;
+  width:100px;
 }
 .cart-subtotal {
   margin-bottom: 5px;
 }
 .cart-item-details h4,p{
-font-size:.8rem;
+font-size:1rem;
 margin-bottom:.25rem;
 }
 .cart-item-controls i{
