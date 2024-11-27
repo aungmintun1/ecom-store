@@ -97,3 +97,32 @@
     margin-bottom: 0;
     padding:0;
   }
+
+  @media (max-width: 475px) {
+  .fa-shopping-bag:before {
+    font-size: 1.5rem;
+  }
+.active-cart{
+  width:75%;
+}
+.cart-header h2 {
+  font-size:1.2rem;
+}
+.cart-item-image{
+  width:75px;
+}
+.cart-subtotal {
+  margin-bottom: 5px;
+}
+.cart-item-details h4,p{
+font-size:.8rem;
+margin-bottom:.25rem;
+}
+.cart-item-controls i{
+width:12px;
+height:10px;
+}
+.fa-trash:before{
+  font-size: .8rem;
+}
+  }

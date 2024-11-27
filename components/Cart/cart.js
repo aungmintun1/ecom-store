@@ -111,7 +111,6 @@ const CartItem = (props) => {
       
      }
     }
-
       let newItems = globalState.cartItems.map((item) => {
         if (item.id === currentQ.id) {
           return { ...item, quantity: currentQ.quantity }; // Correctly create a new item with updated quantity
@@ -121,8 +120,6 @@ const CartItem = (props) => {
 
       ls.set('myCart', newItems);
       globalState.setCartItems(newItems)
-
-     
   };
   
 	return (
