@@ -19,6 +19,10 @@ export function AppProvider({children}){
         setCartItems(storedCartItems);
       }
     }, []);
+
+    const activeCart= () => {
+      setCartMenu(true);
+    }
   
     const addCart = (title, price, image, id, quantity, size) => {
 
@@ -217,6 +221,7 @@ export function AppProvider({children}){
     <StateContext.Provider
     value={{
         cartMenu,
+        activeCart,
         setCartMenu,
         cartItems,
         setCartItems,

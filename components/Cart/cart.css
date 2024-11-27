@@ -105,6 +105,10 @@
 .active-cart{
   width:75%;
 }
+.cart-container {
+  height:95%;
+  padding-bottom: 2.5rem;
+}
 .cart-header h2 {
   font-size:1.2rem;
 }
@@ -125,4 +129,5 @@ height:10px;
 .fa-trash:before{
   font-size: .8rem;
 }
+
   }

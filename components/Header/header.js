@@ -11,11 +11,11 @@ const Header = (props) => {
                 <img src="/img/logo1.png" alt=""/>
                </Link>
                <div>
-               <i onClick={()=> globalState.setCartMenu(true)} className="fal fa-shopping-bag"></i>
+            
                 <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span><i id="bar" className="fas fa-bars"></i></span>
               </button>
-              
+              <i onClick={()=> globalState.activeCart()} className="fal fa-shopping-bag desktop-cart"></i>
                 <div className="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul className="navbar-nav ml-auto">
     
@@ -33,6 +33,7 @@ const Header = (props) => {
                         </li>
                     </ul>
                 </div>
+                
               </div>
             </div>
         </nav>
